@@ -1,0 +1,25 @@
+.navbar.bg-light {
+    background-color: #f3e2b3 !important;
+
+    .form-control {
+        border-radius: 4.25rem;
+    }
+}
+
+.l-btn {
+    width: 70px;
+}
+
+.heading {
+    font-family: "Yuji Mai", serif;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #f5f5fe;
+    width: 215px;
+}
