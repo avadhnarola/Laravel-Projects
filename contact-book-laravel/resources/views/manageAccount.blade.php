@@ -12,10 +12,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="view.css">
 
@@ -72,9 +68,10 @@
             </div>
         </div>
     </nav>
-
-    <div class="container text-center mt-5">
-        <i><h3 class="yuji-mai-regular">View Contact</h3></i>
+    <div class="container mt-5 text-center">
+        <i>
+            <h3 class="yuji-mai-regular">Manage Account</h3>
+        </i>
     </div>
 
     <div class="main">
@@ -84,8 +81,10 @@
 
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Gender</th>
                     <th>Contact No</th>
-                    <th>Saved</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -94,12 +93,14 @@
                 <tr>
                     <td>{{$values->id}}</td>
                     <td>{{$values->name}}</td>
+                    <td>{{$values->email}}</td>
+                    <td>{{$values->password}}</td>
+                    <td>{{$values->gender}}</td>
                     <td>{{$values->contact}}</td>
-                    <td>{{$values->save}}</td>
+
                     <td>
-                        <a href="{{url('/updateContact/' . $values->id)}}"><i class="fa-regular fa-pen-to-square"></i></a>
-                        <a href="{{url('/delete/' . $values->id)}}"><i class="fa-regular fa-trash-can"
-                                style="margin-left:7px;"></i></a>
+                        <a href="{{url('/updateAccount/'. $values->id)}}"><i
+                                class="fa-regular fa-pen-to-square"></i></a>
                     </td>
                 </tr>
                 <?php }?>

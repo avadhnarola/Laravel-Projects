@@ -14,4 +14,6 @@ Route::post('/updateContact/{id}',[userlogin::class,'updateContact']);
 
 Route::get('/delete/{id}',[userlogin::class,'deleteContact']);
 
+Route::any('/manageAccount',[userlogin::class,'getAccountData']);
+
 Route::get('/logout',[userlogin::class,'logout']);

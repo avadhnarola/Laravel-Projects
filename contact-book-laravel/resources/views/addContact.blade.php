@@ -37,7 +37,7 @@
                 <div class="mr-auto"></div>
                 <ul class="navbar-nav my-2 my-lg-0">
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">Home </a>
+                        <a class="nav-link" href="/dashboard">Home </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="/addContact">Add Contact </a>
@@ -46,7 +46,7 @@
                         <a class="nav-link" href="/viewContact">View Contact </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">Manage Account </a>
+                        <a class="nav-link" href="/manageAccount">Manage Account </a>
                     </li>
                     <li class="nav-item dropdown me-3">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

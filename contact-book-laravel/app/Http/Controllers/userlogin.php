@@ -123,7 +123,7 @@ class userlogin extends Controller
         $id = $res->id;
         $arr['data'] = DB::table('contact')->where('id', $id)->get();
         return view('updateContact')->with($arr);
-        
+
     }
 
     public function updateContact(Request $res)
@@ -134,7 +134,7 @@ class userlogin extends Controller
             $name = $res->name;
             $contact = $res->contact;
             $save = $res->save;
- 
+
 
             $data = array('name' => $name, 'contact' => $contact, 'save' => $save);
             $res = DB::table("contact")->where('id', $id)->update($data);
@@ -152,6 +152,21 @@ class userlogin extends Controller
         return redirect('viewContact');
     }
 
+    public function getAccountData(Request $res)
+    {
+
+        if (!$res->session()->has('user_id')) {
+
+            return redirect('/');
+
+        } else {
+
+            $user_id = $res->session()->get('user_id');
+
+            $arr['data'] = DB::table("alluser")->where('id', $user_id)->get();
+            return view('manageAccount')->with($arr);
+        }
+    }
     public function logout(Request $res)
     {
 
