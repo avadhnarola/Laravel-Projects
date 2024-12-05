@@ -12,9 +12,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="header.css">
     <style>
+        .yuji-mai-regular {
+            font-family: "Yuji Mai", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
 
+        .main-div {
+            width: 100%;
+            height: 505px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -80,6 +94,13 @@
             </div>
         </div>
     </nav>
+
+    <div class="container main-div">
+        <i>
+            <h3 class="yuji-mai-regular">Welcome to my Contact Book</h3>
+            <hr style="width:100%;text-align:center;">
+        </i>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

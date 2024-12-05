@@ -152,7 +152,17 @@ class userlogin extends Controller
         return redirect('viewContact');
     }
 
+
     public function getAccountData(Request $res)
+    {
+
+        $id = $res->id;
+        $arr['data'] = DB::table('alluser')->where('id', $id)->get();
+        return view('updateAccount')->with($arr);
+
+    }
+
+    public function viewAccount(Request $res)
     {
 
         if (!$res->session()->has('user_id')) {
@@ -166,6 +176,28 @@ class userlogin extends Controller
             $arr['data'] = DB::table("alluser")->where('id', $user_id)->get();
             return view('manageAccount')->with($arr);
         }
+    }
+
+    public function updateAccount(Request $res)
+    {
+        if ($res->submit) {
+
+            $id = $res->id;
+            $name = $res->name;
+            $email = $res->email;
+            $password = $res->password;
+            $gender = $res->gender;
+            $contact = $res->contact;
+
+
+
+            $data = array('name' => $name, 'email' => $email, 'password' => $password, 'gender' => $gender, 'contact' => $contact);
+            $res = DB::table("alluser")->where('id', $id)->update($data);
+
+
+            return redirect('manageAccount');
+        }
+
     }
     public function logout(Request $res)
     {

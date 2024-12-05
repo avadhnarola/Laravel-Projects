@@ -102,8 +102,7 @@
                 <form class="form" method="post">
                     @csrf
                     <input type="text" class="input" placeholder="Name" name="name" required>
-                    <input type="number" class="input" placeholder="Contact No." maxlength="10" minlength="10"
-                        name="contact" required>
+                    <input type="number" class="input" placeholder="Contact No." name="contact" required>
 
                     <table>
                         <tr>
