@@ -14,6 +14,10 @@
     font-family: "Yuji Mai", serif;
 }
 
+.logout a:hover {
+    color: white;
+}
+
 .image {
     display: flex;
     justify-content: center;
@@ -23,6 +27,7 @@
     background-color: #c7c7c718;
     width: 215px;
 }
+
 .navbar-expand-lg .navbar-nav .dropdown-menu {
     margin-top: 10px;
     border: 1px solid rgba(0, 0, 0, 0.521);

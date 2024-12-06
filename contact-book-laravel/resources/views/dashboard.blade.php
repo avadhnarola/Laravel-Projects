@@ -85,7 +85,7 @@
 
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item logout">
                         <a href="{{URL('/logout')}}" class="btn btn-outline-danger nav-link l-btn"><i
                                 class="fa-solid fa-arrow-right-from-bracket"></i></a>
                     </li>
