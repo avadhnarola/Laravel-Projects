@@ -128,28 +128,41 @@ class userlogin extends Controller
 
     public function updateContact(Request $res)
     {
-        if ($res->submit) {
+        if (!$res->session()->has('user_id')) {
+            return redirect('/');
 
-            $id = $res->id;
-            $name = $res->name;
-            $contact = $res->contact;
-            $save = $res->save;
+        } else {
 
 
-            $data = array('name' => $name, 'contact' => $contact, 'save' => $save);
-            $res = DB::table("contact")->where('id', $id)->update($data);
+            if ($res->submit) {
+
+                $id = $res->id;
+                $name = $res->name;
+                $contact = $res->contact;
+                $save = $res->save;
 
 
-            return redirect('viewContact');
+                $data = array('name' => $name, 'contact' => $contact, 'save' => $save);
+                $res = DB::table("contact")->where('id', $id)->update($data);
+
+
+                return redirect('viewContact');
+            }
         }
 
     }
 
     public function deleteContact(Request $res)
     {
-        $id = $res->id;
-        $arr['data'] = DB::table("contact")->where('id', $id)->delete();
-        return redirect('viewContact');
+        if (!$res->session()->has('user_id')) {
+            return redirect('/');
+
+        } else {
+
+            $id = $res->id;
+            $arr['data'] = DB::table("contact")->where('id', $id)->delete();
+            return redirect('viewContact');
+        }
     }
 
 
@@ -180,22 +193,28 @@ class userlogin extends Controller
 
     public function updateAccount(Request $res)
     {
-        if ($res->submit) {
+        if (!$res->session()->has('user_id')) {
+            return redirect('/');
 
-            $id = $res->id;
-            $name = $res->name;
-            $email = $res->email;
-            $password = $res->password;
-            $gender = $res->gender;
-            $contact = $res->contact;
+        } else {
+
+            if ($res->submit) {
+
+                $id = $res->id;
+                $name = $res->name;
+                $email = $res->email;
+                $password = $res->password;
+                $gender = $res->gender;
+                $contact = $res->contact;
 
 
 
-            $data = array('name' => $name, 'email' => $email, 'password' => $password, 'gender' => $gender, 'contact' => $contact);
-            $res = DB::table("alluser")->where('id', $id)->update($data);
+                $data = array('name' => $name, 'email' => $email, 'password' => $password, 'gender' => $gender, 'contact' => $contact);
+                $res = DB::table("alluser")->where('id', $id)->update($data);
 
 
-            return redirect('manageAccount');
+                return redirect('manageAccount');
+            }
         }
 
     }
