@@ -54,7 +54,18 @@
                             Profile
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg-right p-0" aria-labelledby="navbarDropdown">
-
+                            <?php foreach ($data as $key => $value) { ?>
+                            <div class="card text-center" style="border:none; padding:20px;">
+                                <div class="image">
+                                    <img src="https://avatars.mds.yandex.net/i?id=ad1f8ba294799802cab08ac374a914d8aec61944-10877191-images-thumbs&n=13"
+                                        alt="{{$value->name}}" class="rounded-circle" style="width:50px;height:50px;">
+                                </div>
+                                <h4>{{$value->name}}</h4>
+                                <p class="">{{$value->email}}</p>
+                                <p>{{$value->gender}}</p>
+                                <p>Contact : {{$value->contact}}</p>
+                            </div>
+                            <?php } ?>
                         </div>
 
                     </li>
@@ -99,7 +110,7 @@
                     <td>{{$values->contact}}</td>
 
                     <td>
-                        <a href="{{url('/updateAccount/'. $values->id)}}"><i
+                        <a href="{{url('/updateAccount/' . $values->id)}}"><i
                                 class="fa-regular fa-pen-to-square"></i></a>
                     </td>
                 </tr>
