@@ -1,4 +1,17 @@
-@include('header');
+@include('header')
+<div class="container-xxl position-relative p-0">
+    <div class="container-xxl py-5 bg-dark hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">About Us</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">About</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
 
 <!-- About Start -->
 <div class="container-xxl py-5">
@@ -7,17 +20,20 @@
             <div class="col-lg-6">
                 <div class="row g-3">
                     <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="front_css/img/about-1.jpg">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s"
+                            src="front_css/img/about-1.jpg">
                     </div>
                     <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="front_css/img/about-2.jpg"
-                            style="margin-top: 25%;">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"
+                            src="front_css/img/about-2.jpg" style="margin-top: 25%;">
                     </div>
                     <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="front_css/img/about-3.jpg">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s"
+                            src="front_css/img/about-3.jpg">
                     </div>
                     <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="front_css/img/about-4.jpg">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
+                            src="front_css/img/about-4.jpg">
                     </div>
                 </div>
             </div>
