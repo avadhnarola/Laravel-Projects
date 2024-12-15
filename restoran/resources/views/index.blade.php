@@ -9,7 +9,8 @@
                     <p class="text-white animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor
                         diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem
                         sit clita duo justo magna dolore erat amet</p>
-                    <a href="/booking" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>
+                    <a href="/booking" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A
+                        Table</a>
                 </div>
                 <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                     <img class="img-fluid" src="front_css/img/hero.png" alt="">
@@ -22,15 +23,17 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-4">
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item rounded pt-3">
+            <?php foreach ($data as $key => $values) { ?>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s" >
+                <div class="service-item rounded pt-3" style="height: 260px;width: 260px;">
                     <div class="p-4">
-                        <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                        <h5>Master Chefs</h5>
-                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                        <i class="{{$values->icon}} fa-3x text-primary mb-4"></i>
+                        <h5>{{$values->title}}</h5>
+                        <p>{{$values->description}}</p>
                     </div>
                 </div>
             </div>
+            <?php }?>
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item rounded pt-3">
                     <div class="p-4">

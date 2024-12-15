@@ -18,6 +18,11 @@ Route::get('/contact',[userController::class,'contact']);
 //Admin Side
 Route::any('/admin',[adminController::class,'index']);
 Route::any('/dashboard',[adminController::class,'dashboard']);
+Route::any('/addService',[adminController::class,'addService']);
+Route::any('/viewService',[adminController::class,'viewService']);
 
 
-Route::get('/logout',[adminController::class,'logout']);
+Route::get('/delete/{id}',[adminController::class,'delete']);
+Route::get('/updateService/{id}',[adminController::class,'getServiceData']);
+Route::post('/updateService/{id}',[adminController::class,'updateService']);
+Route::get('logout',[adminController::class,'logout']);

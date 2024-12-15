@@ -12,23 +12,23 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="admin_css/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/admin_css/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="admin_css/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="/admin_css/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="admin_css/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="/admin_css/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="admin_css/plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="/admin_css/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="admin_css/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/admin_css/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="admin_css/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="/admin_css/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="admin_css/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="/admin_css/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="admin_css/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="/admin_css/plugins/summernote/summernote-bs4.min.css">
 
   <!-- Bootstrap Icon -->
   <!-- Option 1: Include in HTML -->
@@ -65,7 +65,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="admin_css/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+      <img class="animation__shake" src="/admin_css/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
 
     <!-- Navbar -->
@@ -120,7 +120,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="admin_css/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <img src="/admin_css/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Brad Diesel
@@ -136,7 +136,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="admin_css/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="/admin_css/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     John Pierce
@@ -152,7 +152,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="admin_css/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="/admin_css/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Nora Silvester
@@ -213,7 +213,7 @@
     <aside class="main-sidebar elevation-4">
       <!-- Brand Logo -->
       <a href="dashboard.php" class="brand-link" style="display:inline-flex;align-items:center">
-        <img src="admin_css/images/logo.webp" alt="AdminLTE Logo" class=" " style="opacity: .8">
+        <img src="/admin_css/images/logo.webp" alt="AdminLTE Logo" class=" " style="opacity: .8">
         <span class="brand-text font-weight-bold logo-txt">Admin Panel</span>
       </a>
 
@@ -222,7 +222,7 @@
         <!-- Sidebar user panel (optional) -->
         <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="admin_css/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="/admin_css/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"><?php echo @$_SESSION['admin_name']; ?></a>
@@ -256,19 +256,19 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon bi bi-sliders" style="color:#795548"></i>
                 <p>
-                  Slider
+                  Service
                   <i class=" right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="addSlider.php" class="nav-link">
+                  <a href="{{url('/addService')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add Slider</p>
+                    <p>Add Service</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="viewSlider.php" class="nav-link">
+                  <a href="{{url('/viewService')}}" class="nav-link">
                     <i class="far fa-circle nav-icon" style="color:#795548"></i>
                     <p>View Slider</p>
                   </a>
