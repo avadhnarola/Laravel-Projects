@@ -31,7 +31,8 @@ class userController extends Controller
     }
     public function menu()
     {
-        return view('menu');
+        $arr['menu_data'] = DB::table('food')->get();
+        return view('menu')->with($arr);
     }
     public function team()
     {
