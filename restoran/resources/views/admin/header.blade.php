@@ -212,7 +212,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar elevation-4">
       <!-- Brand Logo -->
-      <a href="dashboard.php" class="brand-link" style="display:inline-flex;align-items:center">
+      <a href="{{URL('/dashboard')}}" class="brand-link" style="display:inline-flex;align-items:center">
         <img src="/admin_css/images/logo.webp" alt="AdminLTE Logo" class=" " style="opacity: .8">
         <span class="brand-text font-weight-bold logo-txt">Admin Panel</span>
       </a>
@@ -276,23 +276,23 @@
               </ul>
             <li class="nav-item">
               <a href="#" class="nav-link ">
-                <i class="nav-icon bi bi-ui-radios-grid" style="color:#ff5722"></i>
+                <i class="nav-icon bi bi-egg-fried" style="color:#ff5722"></i>
                 <p>
-                  Offers
+                  Food
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="addOffers.php" class="nav-link">
+                  <a href="{{url('/addFood')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add Offers</p>
+                    <p>Add Food</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="viewOffers.php" class="nav-link">
+                  <a href="{{URL('viewFood')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>View Offers</p>
+                    <p>View Food</p>
                   </a>
                 </li>
               </ul>

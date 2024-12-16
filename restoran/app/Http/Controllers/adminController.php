@@ -59,7 +59,7 @@ class adminController extends Controller
                 $res = DB::table('service')->insert($data);
 
 
-                return redirect('/dashboard');
+                return redirect('/viewService');
 
             }
 
@@ -118,6 +118,66 @@ class adminController extends Controller
         }
 
     }
+
+    public function addFood(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+
+            if ($res->submit) {
+
+                $name = $res->name;
+                $description = $res->description;
+                $price = $res->price;
+                $foodType = $res->foodType;
+                $image = $res->file('image')->getClientOriginalName();
+                $res->file('image')->move(public_path('food_images'), $image);
+
+                $data = array('name' => $name, 'description' => $description, 'price' => $price, 'image' => $image, 'foodType' => $foodType);
+
+                $res = DB::table('food')->insert($data);
+
+
+                return redirect('/viewFood');
+
+            }
+
+            return view('admin/addFood');
+        }
+    }
+
+    public function viewFood(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+
+            $arr['data'] = DB::table('food')->get();
+            return view('admin/viewFood')->with($arr);
+        }
+    }
+
+    public function deleteFood(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+
+            $id = $res->id;
+
+            $arr['data'] = DB::table('food')->where('id', $id)->delete();
+
+            return redirect('/viewFood');
+        }
+
+    }
+
+
+
+
+
+
     public function logout(Request $res)
     {
         $res->session()->flush();

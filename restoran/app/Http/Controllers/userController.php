@@ -10,11 +10,10 @@ class userController extends Controller
 {
     public function index(Request $res)
     {
-
-
         // array ma store krvana variable and ->with(array)
         $id = $res->id;
-        $arr['data'] = DB::table('service')->get();
+        $arr['data'] = DB::table('service')->limit(4)->get();
+        $arr['food_data'] = DB::table('food')->get();
 
         return view('index')->with($arr);
     }
@@ -24,9 +23,11 @@ class userController extends Controller
         return view('about');
     }
 
-    public function service()
+    public function service(Request $res)
     {
-        return view('service');
+        $arr['data'] = DB::table('service')->get();
+
+        return view('service')->with($arr);
     }
     public function menu()
     {
