@@ -104,7 +104,7 @@ class adminController extends Controller
         }
 
     }
-    public function delete(Request $res)
+    public function deleteService(Request $res)
     {
         if (!$res->session()->has('admin_id')) {
             return redirect('admin/');
@@ -173,9 +173,114 @@ class adminController extends Controller
 
     }
 
+    public function getFoodData(Request $res)
+    {
+        $id = $res->id;
+        $arr['data'] = DB::table('food')->where('id', $id)->get();
+        return view('admin/updateFood')->with($arr);
+    }
+
+    public function updateFood(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+            if ($res->submit) {
+                $id = $res->id;
+                $name = $res->name;
+                $description = $res->description;
+                $price = $res->price;
+                $foodType = $res->foodType;
+                $image = $res->file('image')->getClientOriginalName();
+                $res->file('image')->move(public_path('food_images'), $image);
+
+                $data = array('name' => $name, 'description' => $description, 'price' => $price, 'image' => $image, 'foodType' => $foodType);
+                $res = DB::table('food')->where('id', $id)->update($data);
+                return redirect('/viewFood');
+            }
+        }
+
+    }
 
 
+    public function addTeam(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
 
+            if ($res->submit) {
+
+                $name = $res->name;
+                $designation = $res->designation;
+                $image = $res->file('image')->getClientOriginalName();
+                $res->file('image')->move(public_path('Chef_images'), $image);
+
+                $data = array('name' => $name, 'designation' => $designation, 'image' => $image);
+
+                $res = DB::table('chef')->insert($data);
+
+
+                return redirect('/viewTeam');
+
+            }
+
+            return view('admin/addTeam');
+        }
+    }
+
+    public function viewTeam(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+
+            $arr['data'] = DB::table('chef')->get();
+            return view('admin/viewTeam')->with($arr);
+        }
+    }
+
+    public function deleteTeam(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+
+            $id = $res->id;
+
+            $arr['data'] = DB::table('chef')->where('id', $id)->delete();
+
+            return redirect('/viewTeam');
+        }
+
+    }
+
+    public function getTeamData(Request $res)
+    {
+        $id = $res->id;
+        $arr['data'] = DB::table('chef')->where('id', $id)->get();
+        return view('admin/updateTeam')->with($arr);
+    }
+
+    public function updateTeam(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+            if ($res->submit) {
+                $id = $res->id;
+                $name = $res->name;
+                $designation = $res->designation;
+                $image = $res->file('image')->getClientOriginalName();
+                $res->file('image')->move(public_path('Chef_images'), $image);
+
+                $data = array('name' => $name, 'designation' => $designation, 'image' => $image);
+                $res = DB::table('chef')->where('id', $id)->update($data);
+                return redirect('/viewTeam');
+            }
+        }
+
+    }
 
 
     public function logout(Request $res)

@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>View Food</h1>
+                    <h1>View Chef</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{URL('/dashboard')}}">Home</a></li>
-                        <li class="breadcrumb-item active">View Food</li>
+                        <li class="breadcrumb-item active">View Chef</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header bg-primary">
-                            <h3 class="card-title">Manage Food</h3>
+                            <h3 class="card-title">Manage Chef</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -33,10 +33,8 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Food Type</th>
-                                        <th>Price</th>
-                                        <th>Food Image</th>
+                                        <th>Designation</th>
+                                        <th>Image</th>
                                         <th colspan="2">Action</th>
                                     </tr>
                                 </thead>
@@ -45,19 +43,14 @@
                                     <tr>
                                         <td>{{$values->id}}</td>
                                         <td>{{$values->name}}</td>
-                                        <td>{{$values->description}}</td>
-                                        <td>{{$values->foodType}}</td>
-                                        <td>{{$values->price}}</td>
-                                        <td><img src="{{asset("food_images/".$values->image)}}" alt="" style="height:80px; width:80px;"></td>
-
+                                        <td>{{$values->designation}}</td>
+                                        <td><img src="{{asset("chef_images/".$values->image)}}" alt="" style="height:80px; width:80px;"></td>
                                         <td>
-                                            <a href="{{URL('/updateFood/' . $values->id)}}"><i
-                                                    class="fa-regular fa-pen-to-square" style="color:green;"></i></a>
+                                            <a href="{{URL('/updateTeam/'.$values->id)}}"><i class="fa-regular fa-pen-to-square" style="color:green;"></i></a>
                                         </td>
                                         <td>
 
-                                            <a href="{{URL('/deleteFood/' . $values->id)}}"><i class="fa-regular fa-trash-can"
-                                                    style="color:red; margin-left:8px;"></i></a>
+                                            <a href="{{URL('/deleteTeam/'.$values->id)}}"><i class="fa-regular fa-trash-can" style="color:red; margin-left:8px;"></i></a>
                                         </td>
                                     </tr>
                                     <?php }?>

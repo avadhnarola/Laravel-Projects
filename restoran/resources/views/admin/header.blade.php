@@ -299,23 +299,23 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link ">
-                <i class="nav-icon bi bi-palette" style="color:#673ab7"></i>
+                <i class="nav-icon bi bi-person" style="color:#673ab7"></i>
                 <p>
-                  About Theme
+                  Chef
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="addAboutTheme.php" class="nav-link">
+                  <a href="{{url('/addTeam')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add Theme</p>
+                    <p>Add Chef</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="viewAboutTheme.php" class="nav-link">
+                  <a href="{{url('/viewTeam')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>View Theme</p>
+                    <p>View Chef</p>
                   </a>
                 </li>
               </ul>

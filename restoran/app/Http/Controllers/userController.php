@@ -14,18 +14,21 @@ class userController extends Controller
         $id = $res->id;
         $arr['data'] = DB::table('service')->limit(4)->get();
         $arr['food_data'] = DB::table('food')->get();
+        $arr['chef_data'] = DB::table('chef')->limit(4)->get();
 
         return view('index')->with($arr);
     }
 
     public function about()
     {
-        return view('about');
+        $arr['chef_data'] = DB::table('chef')->limit(4)->get();
+
+        return view('about')->with($arr);
     }
 
     public function service(Request $res)
     {
-        $arr['data'] = DB::table('service')->get();
+        $arr['service_data'] = DB::table('service')->get();
 
         return view('service')->with($arr);
     }
@@ -36,7 +39,9 @@ class userController extends Controller
     }
     public function team()
     {
-        return view('team');
+        $arr['team_data'] = DB::table('chef')->get();
+
+        return view('team')->with($arr);
     }
 
     public function booking()

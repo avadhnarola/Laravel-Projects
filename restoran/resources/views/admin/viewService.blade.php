@@ -50,7 +50,7 @@
                                         </td>
                                         <td>
 
-                                            <a href="{{URL('/delete/'.$values->id)}}"><i class="fa-regular fa-trash-can" style="color:red; margin-left:8px;"></i></a>
+                                            <a href="{{URL('/deleteService/'.$values->id)}}"><i class="fa-regular fa-trash-can" style="color:red; margin-left:8px;"></i></a>
                                         </td>
                                     </tr>
                                     <?php }?>
