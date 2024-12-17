@@ -13,7 +13,7 @@
                         Table</a>
                 </div>
                 <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                    <img class="img-fluid" src="front_css/img/hero.png" alt="">
+                    <img class="img-fluid" src="https://d2mekbzx20fc11.cloudfront.net/uploads/c1889-Margherita_600x600.png" alt="">
                 </div>
             </div>
         </div>
@@ -265,7 +265,8 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item text-center rounded overflow-hidden">
                     <div class="rounded-circle overflow-hidden m-4">
-                        <img class="img-fluid" src="{{asset('chef_images/'.$values->image)}}" alt="" style="height:213px; width:213px;">
+                        <img class="img-fluid" src="{{asset('chef_images/' . $values->image)}}" alt=""
+                            style="height:213px; width:213px;">
                     </div>
                     <h5 class="mb-0">{{$values->name}}</h5>
                     <small>{{$values->designation}}</small>
@@ -291,54 +292,20 @@
             <h1 class="mb-5">Our Clients Say!!!</h1>
         </div>
         <div class="owl-carousel testimonial-carousel">
-            <div class="testimonial-item bg-transparent border rounded p-4">
+            <?php foreach ($testimonial_data as $key => $values) { ?>
+            <div class="testimonial-item bg-transparent border rounded p-4 " style="width: 356px;height: 238px;">
                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                <p style="height:75px;">{{$values->description}}</p>
                 <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="front_css/img/testimonial-1.jpg"
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{asset('testimonial_images/'.$values->image)}}"
                         style="width: 50px; height: 50px;">
                     <div class="ps-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <small>Profession</small>
+                        <h5 class="mb-1">{{$values->name}}</h5>
+                        <small>{{$values->profession}}</small>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-item bg-transparent border rounded p-4">
-                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="front_css/img/testimonial-2.jpg"
-                        style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <small>Profession</small>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item bg-transparent border rounded p-4">
-                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="front_css/img/testimonial-3.jpg"
-                        style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <small>Profession</small>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item bg-transparent border rounded p-4">
-                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="front_css/img/testimonial-4.jpg"
-                        style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <small>Profession</small>
-                    </div>
-                </div>
-            </div>
+            <?php }?>
         </div>
     </div>
 </div>

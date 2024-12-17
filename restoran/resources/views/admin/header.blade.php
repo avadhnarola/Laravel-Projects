@@ -65,7 +65,8 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="/admin_css/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+      <img class="animation__shake" src="/admin_css/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60"
+        width="60">
     </div>
 
     <!-- Navbar -->
@@ -322,23 +323,23 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link ">
-                <i class="nav-icon bi bi-images" style="color:#3f51b5"></i>
+                <i class="nav-icon bi bi-chat-dots" style="color:#3f51b5"></i>
                 <p>
-                  Recent Photos
+                  Testimonial
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="addRecentPhotos.php" class="nav-link">
+                  <a href="{{url('/addTestimonial')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add Images</p>
+                    <p>Add Testimonial</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="viewRecentPhotos.php" class="nav-link">
+                  <a href="{{url('/viewTestimonial')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>View Images</p>
+                    <p>View Testimonial</p>
                   </a>
                 </li>
               </ul>

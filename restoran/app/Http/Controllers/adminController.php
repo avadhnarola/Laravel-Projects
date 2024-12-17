@@ -282,6 +282,96 @@ class adminController extends Controller
 
     }
 
+    public function addTestimonial(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+
+            if ($res->submit) {
+
+                $name = $res->name;
+                $description = $res->description;
+                $profession = $res->profession;
+                $image = $res->file('image')->getClientOriginalName();
+                $res->file('image')->move(public_path('testimonial_images'), $image);
+
+                $data = array('name' => $name, 'description' => $description, 'profession' => $profession, 'image' => $image);
+
+                $res = DB::table('testimonial')->insert($data);
+
+
+                return redirect('/viewTestimonial');
+
+            }
+
+            return view('admin/addTestimonial');
+        }
+    }
+
+    public function viewTestimonial(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+
+            $arr['data'] = DB::table('testimonial')->get();
+            return view('admin/viewTestimonial')->with($arr);
+        }
+    }
+
+    public function deleteTestimonial(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+
+            $id = $res->id;
+
+            $arr['data'] = DB::table('testimonial')->where('id', $id)->delete();
+
+            return redirect('/viewTestimonial');
+        }
+
+    }
+
+    public function getTestimonialData(Request $res)
+    {
+        $id = $res->id;
+        $arr['data'] = DB::table('testimonial')->where('id', $id)->get();
+        return view('admin/updateTestimonial')->with($arr);
+    }
+
+    public function updateTestimonial(Request $res)
+    {
+        if (!$res->session()->has('admin_id')) {
+            return redirect('admin/');
+        } else {
+            if ($res->submit) {
+                $id = $res->id;
+                $name = $res->name;
+                $description = $res->description;
+                $profession = $res->profession;
+                $image = $res->file('image')->getClientOriginalName();
+                $res->file('image')->move(public_path('testimonial_images'), $image);
+
+                $data = array('name' => $name, 'description' => $description, 'profession' => $profession, 'image' => $image);
+                $res = DB::table('testimonial')->where('id', $id)->update($data);
+                return redirect('/viewTestimonial');
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     public function logout(Request $res)
     {

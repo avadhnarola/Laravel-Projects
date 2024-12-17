@@ -41,5 +41,12 @@ Route::get('/updateTeam/{id}',[adminController::class,'getTeamData']);
 Route::post('/updateTeam/{id}',[adminController::class,'updateTeam']);
 Route::get('/deleteTeam/{id}',[adminController::class,'deleteTeam']);
 
+//Testimonial
+Route::any('/addTestimonial',[adminController::class,'addTestimonial']);
+Route::any('/viewTestimonial',[adminController::class,'viewTestimonial']);
+Route::get('/updateTestimonial/{id}',[adminController::class,'getTestimonialData']);
+Route::post('/updateTestimonial/{id}',[adminController::class,'updateTestimonial']);
+Route::get('/deleteTestimonial/{id}',[adminController::class,'deleteTestimonial']);
+
 
 Route::get('logout',[adminController::class,'logout']);

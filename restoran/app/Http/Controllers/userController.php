@@ -15,6 +15,7 @@ class userController extends Controller
         $arr['data'] = DB::table('service')->limit(4)->get();
         $arr['food_data'] = DB::table('food')->get();
         $arr['chef_data'] = DB::table('chef')->limit(4)->get();
+        $arr['testimonial_data'] = DB::table('testimonial')->get();
 
         return view('index')->with($arr);
     }
@@ -50,7 +51,8 @@ class userController extends Controller
     }
     public function testimonial()
     {
-        return view('testimonial');
+        $arr['testimonial_data'] = DB::table('testimonial')->get();
+        return view('testimonial')->with($arr);
     }
     public function contact()
     {
