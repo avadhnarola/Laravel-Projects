@@ -13,7 +13,7 @@ Route::get('/menu',[userController::class,'menu']);
 Route::get('/team',[userController::class,'team']);
 Route::get('/booking',[userController::class,'booking']);
 Route::get('/testimonial',[userController::class,'testimonial']);
-Route::get('/contact',[userController::class,'contact']);
+Route::any('/contact',[userController::class,'contact']);
 
 //Admin Side
 Route::any('/admin',[adminController::class,'index']);

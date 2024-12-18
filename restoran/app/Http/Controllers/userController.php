@@ -54,8 +54,20 @@ class userController extends Controller
         $arr['testimonial_data'] = DB::table('testimonial')->get();
         return view('testimonial')->with($arr);
     }
-    public function contact()
+    public function contact(Request $res)
     {
+
+        if ($res->submit) {
+
+            $name = $res->name;
+            $email = $res->email;
+            $subject = $res->subject;
+            $message = $res->message;
+
+            $data = array('name' => $name, 'email' => $email, 'subject' => $subject, 'message' => $message);
+
+            $res = DB::table('contact')->insert($data);
+        }
         return view('contact');
     }
 }

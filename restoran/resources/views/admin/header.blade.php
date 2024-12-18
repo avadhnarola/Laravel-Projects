@@ -51,11 +51,24 @@
       color: #72777a;
 
     }
+    .card-primary:not(.card-outline)>.card-header {
+      background-color: #0F172B;
+    }
 
+    .card-title {
+      color:white;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+      background-color: #FEA116;
+    }
+    
     .nav-sidebar .nav-link p:hover {
       font-weight: 600;
       color: #72777f;
-
+    }
+    .btn-primary {
+      background-color: #FEA116;
+      border: none;
     }
   </style>
 </head>
@@ -345,71 +358,6 @@
               </ul>
             </li>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link ">
-                <i class="nav-icon bi bi-stickies" style="color:#f44336"></i>
-                <p>
-                  Latest Blog
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="addBlog.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Latest BLog</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="viewBlog.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>View Latest Blog</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link ">
-                <i class="nav-icon bi bi-people" style="color:#ff9800"></i>
-                <p>
-                  Clients
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="addClient.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Client</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="viewClient.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>View Client</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="addCategory.php" class="nav-link ">
-                <i class="nav-icon bi bi-list-ul" style="color:#009688"></i>
-                <p>
-                  Category
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="addWork.php" class="nav-link ">
-                <i class="bi bi-image-alt" style="color:#f44336"></i>
-                <p>
-                  Work
-                </p>
-              </a>
-            </li>
 
           </ul>
           </nav>
