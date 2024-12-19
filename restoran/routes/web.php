@@ -14,6 +14,7 @@ Route::get('/team',[userController::class,'team']);
 Route::get('/booking',[userController::class,'booking']);
 Route::get('/testimonial',[userController::class,'testimonial']);
 Route::any('/contact',[userController::class,'contact']);
+Route::any('/cart',[userController::class,'cart']);
 
 //Admin Side
 Route::any('/admin',[adminController::class,'index']);
