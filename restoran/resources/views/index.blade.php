@@ -168,7 +168,7 @@
                                         <small class="fst-italic">{{$values->description}}</small>
                                         </div>
                                         <div class="col-sm-2">
-                                             <a href="/cart" class="btn" style="background-color:#0F172B; color:#fff;">Order</a>
+                                             <a href="/cart" class="btn btn-cart" style="background-color:#0F172B; color:#fff;">Order</a>
                                         </div>
                                     </div>
                                 </div>

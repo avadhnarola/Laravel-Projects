@@ -78,7 +78,15 @@
                                         <span>{{$values->name}}</span>
                                         <span class="text-primary">₹{{$values->price}}</span>
                                     </h5>
-                                    <small class="fst-italic">{{$values->description}}</small>
+                                    <div class="d-flex">
+                                        <div class="col-sm-10">
+                                            <small class="fst-italic">{{$values->description}}</small>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="/cart" class="btn btn-cart"
+                                                style="background-color:#0F172B; color:#fff;">Order</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="row align-items-center mb-3">
                             <div class="col-md-2 text-center">
-                                <img src="https://via.placeholder.com/100" class="img-fluid rounded" alt="Food Item">
+                                <img src="food_images/french-fires.webp" class="img-fluid rounded" alt="Food Item">
                             </div>
                             <div class="col-md-4">
                                 <h5>Pizza Margherita</h5>
@@ -76,16 +76,16 @@
                     <div class="card-body">
                         <h5 class="card-title">Order Summary</h5>
                         <div class="d-flex justify-content-between">
-                            <p class="mb-1">Subtotal</p>
+                            <p class="mb-1">Subtotal : </p>
                             <p class="mb-1" id="subtotal">₹30.99</p>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <p class="mb-1">Delivery Charge: (5%)</p>
+                            <p class="mb-1">Delivery Charge : (5%)</p>
                             <p class="mb-1" id="tax">₹3.10</p>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
-                            <h6>Total</h6>
+                            <h6>Total : </h6>
                             <h6 id="total">₹34.09</h6>
                         </div>
                         <button class="btn btn-primary w-100 mt-3">Proceed to Checkout</button>
