@@ -71,7 +71,30 @@ class userController extends Controller
         return view('contact');
     }
 
-    public function cart() {
-        return view("cart");
+    public function getCartData(Request $res)
+    {
+        $id = $res->id;
+        if ($res->id == $id) {
+
+
+            $name = $res->name;
+            $description = $res->description;
+            $price = $res->price;
+            $foodType = $res->foodType;
+            $image = $res->image;
+            // $image = $res->file('image')->getClientOriginalName();
+            // $res->file('image')->move(public_path('cart_food_images'), $image);
+
+            $data = array('name' => $name, 'description' => $description, 'price' => $price, 'image' => $image, 'foodType' => $foodType);
+
+            $res = DB::table('cart')->insert($data);
+        }
+
+        $arr['cart_data'] = DB::table("cart")->get();
+
+
+        return view("cart")->with($arr);
     }
+
+
 }

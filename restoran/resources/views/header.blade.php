@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="front_css/img/favicon.ico" rel="icon">
+    <link href="/front_css/img/favicon.ico" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
     <!-- Google Web Fonts -->
@@ -22,15 +22,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="front_css/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="front_css/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="front_css/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="/front_css/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/front_css/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/front_css/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="front_css/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/front_css/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="front_css/css/style.css" rel="stylesheet">
+    <link href="/front_css/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +49,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="/" class="navbar-brand p-0">
                     <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
-                    <!-- <img src="front_css/img/logo.png" alt="Logo"> -->
+                    <!-- <img src="/front_css/img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>

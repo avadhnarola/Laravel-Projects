@@ -22,9 +22,10 @@
             <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card-body">
+                        <?php foreach ($cart_data as $key => $values) { ?>
                         <div class="row align-items-center mb-3">
                             <div class="col-md-2 text-center">
-                                <img src="food_images/french-fires.webp" class="img-fluid rounded" alt="Food Item">
+                                <img src="/food_images/french-fires.webp" class="img-fluid rounded" alt="Food Item">
                             </div>
                             <div class="col-md-4">
                                 <h5>Pizza Margherita</h5>
@@ -44,29 +45,10 @@
                                 <button class="btn btn-danger btn-sm btn-remove">Remove</button>
                             </div>
                         </div>
+
                         <hr>
-                        <div class="row align-items-center">
-                            <div class="col-md-2 text-center">
-                                <img src="https://via.placeholder.com/100" class="img-fluid rounded" alt="Food Item">
-                            </div>
-                            <div class="col-md-4">
-                                <h5>Caesar Salad</h5>
-                                <p class="text-muted">Fresh and healthy</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <div class="quantity-control d-flex justify-content-center align-items-center">
-                                    <button class="btn btn-outline-secondary btn-sm btn-decrement">-</button>
-                                    <span class="px-2 quantity">2</span>
-                                    <button class="btn btn-outline-secondary btn-sm btn-increment">+</button>
-                                </div>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <p class="mb-0 price" data-price="8.50">₹8.50</p>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <button class="btn btn-danger btn-sm btn-remove">Remove</button>
-                            </div>
-                        </div>
+                        <?php }?>
+                        
                     </div>
                 </div>
             </div>
@@ -119,9 +101,9 @@
             const tax = subtotal * 0.05;
             const total = subtotal + tax;
 
-            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
-            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
         };
 
         document.querySelectorAll('.btn-increment').forEach(button => {

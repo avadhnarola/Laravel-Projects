@@ -14,7 +14,7 @@ Route::get('/team',[userController::class,'team']);
 Route::get('/booking',[userController::class,'booking']);
 Route::get('/testimonial',[userController::class,'testimonial']);
 Route::any('/contact',[userController::class,'contact']);
-Route::any('/cart',[userController::class,'cart']);
+// Route::any('/cart',[userController::class,'cart']);
 
 //Admin Side
 Route::any('/admin',[adminController::class,'index']);
@@ -48,6 +48,9 @@ Route::any('/viewTestimonial',[adminController::class,'viewTestimonial']);
 Route::get('/updateTestimonial/{id}',[adminController::class,'getTestimonialData']);
 Route::post('/updateTestimonial/{id}',[adminController::class,'updateTestimonial']);
 Route::get('/deleteTestimonial/{id}',[adminController::class,'deleteTestimonial']);
+
+//Cart
+Route::any('cart/{id}',[userController::class,'getCartData']);
 
 
 Route::get('logout',[adminController::class,'logout']);
