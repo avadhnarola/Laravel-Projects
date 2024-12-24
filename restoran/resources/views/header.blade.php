@@ -72,7 +72,7 @@
                     </div>
                     <a href="/booking" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
-                <a href="/cart" class="nav-item nav-link"><i class="bi bi-cart3 fa-xl" ></i></a>
+                <a href="/cart/" class="nav-item nav-link"><i class="bi bi-cart3 fa-xl" ></i></a>
             </nav>
 
             

@@ -22,14 +22,16 @@
             <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card-body">
+
                         <?php foreach ($cart_data as $key => $values) { ?>
                         <div class="row align-items-center mb-3">
                             <div class="col-md-2 text-center">
-                                <img src="/food_images/french-fires.webp" class="img-fluid rounded" alt="Food Item">
+                                <img src="{{asset('food_images/' . $values->image)}}" class="img-fluid rounded"
+                                    alt="Food Item">
                             </div>
                             <div class="col-md-4">
-                                <h5>Pizza Margherita</h5>
-                                <p class="text-muted">Delicious classic pizza</p>
+                                <h5>{{$values->name}}</h5>
+                                <p class="text-muted">{{$values->description}}</p>
                             </div>
                             <div class="col-md-2 text-center">
                                 <div class="quantity-control d-flex justify-content-center align-items-center">
@@ -39,16 +41,17 @@
                                 </div>
                             </div>
                             <div class="col-md-2 text-center">
-                                <p class="mb-0 price" data-price="12.99">₹12.99</p>
+                                <p class="mb-0 price" data-price="{{$values->price}}">₹{{$values->price}}</p>
                             </div>
                             <div class="col-md-2 text-center">
-                                <button class="btn btn-danger btn-sm btn-remove">Remove</button>
+                                <a href="{{URL('/deleteCart/' . $values->id)}}"
+                                    class="btn btn-danger btn-sm btn-remove">Remove</a>
                             </div>
                         </div>
 
                         <hr>
-                        <?php }?>
-                        
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>
@@ -59,16 +62,16 @@
                         <h5 class="card-title">Order Summary</h5>
                         <div class="d-flex justify-content-between">
                             <p class="mb-1">Subtotal : </p>
-                            <p class="mb-1" id="subtotal">₹30.99</p>
+                            <p class="mb-1" id="subtotal">₹0.00</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p class="mb-1">Delivery Charge : (5%)</p>
-                            <p class="mb-1" id="tax">₹3.10</p>
+                            <p class="mb-1" id="tax">₹0.00</p>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
                             <h6>Total : </h6>
-                            <h6 id="total">₹34.09</h6>
+                            <h6 id="total">₹0.00</h6>
                         </div>
                         <button class="btn btn-primary w-100 mt-3">Proceed to Checkout</button>
                     </div>
@@ -83,9 +86,14 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        let subtotal = 0;
+        let tax = 0;
+        let total = 0;
+
         const updateSummary = () => {
-            let subtotal = 0;
-            const rows = document.querySelectorAll('.card-body .row.align-items-center');
+            subtotal = 0; // Reset subtotal
+
+            const rows = document.querySelectorAll('.row.align-items-center');
 
             rows.forEach(row => {
                 const priceElement = row.querySelector('.price');
@@ -94,13 +102,15 @@
                 if (priceElement && quantityElement) {
                     const price = parseFloat(priceElement.dataset.price);
                     const quantity = parseInt(quantityElement.textContent);
+
                     subtotal += price * quantity;
                 }
             });
 
-            const tax = subtotal * 0.05;
-            const total = subtotal + tax;
+            tax = subtotal * 0.05; // Calculate tax (5% of subtotal)
+            total = subtotal + tax; // Calculate total
 
+            // Update the DOM
             document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
             document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
             document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
@@ -138,5 +148,8 @@
                 }
             });
         });
+
+        // Initial calculation
+        updateSummary();
     });
 </script>

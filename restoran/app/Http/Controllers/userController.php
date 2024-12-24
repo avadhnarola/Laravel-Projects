@@ -74,27 +74,41 @@ class userController extends Controller
     public function getCartData(Request $res)
     {
         $id = $res->id;
-        if ($res->id == $id) {
+        // Fetch the food item by ID
+        $food_data = DB::table("food")->where("id", $id)->first();
+
+        if ($food_data) {
+            // Insert into the cart table
+            DB::table('cart')->insert([
+                'id' => $food_data->id,
+                'name' => $food_data->name,
+                'description' => $food_data->description,
+                'foodType' => $food_data->foodType,
+                'image' => $food_data->image,
+                'price' => $food_data->price,
+            ]);
 
 
-            $name = $res->name;
-            $description = $res->description;
-            $price = $res->price;
-            $foodType = $res->foodType;
-            $image = $res->image;
-            // $image = $res->file('image')->getClientOriginalName();
-            // $res->file('image')->move(public_path('cart_food_images'), $image);
+            $cart_data['cart_data'] = DB::table("cart")->get();
 
-            $data = array('name' => $name, 'description' => $description, 'price' => $price, 'image' => $image, 'foodType' => $foodType);
-
-            $res = DB::table('cart')->insert($data);
+            return view("cart", ['cart_data' => $cart_data])->with($cart_data);
         }
-
-        $arr['cart_data'] = DB::table("cart")->get();
-
-
-        return view("cart")->with($arr);
     }
 
+    public function cart()
+    {
+        $cart_data['cart_data'] = DB::table("cart")->get();
 
+        return view("cart", ['cart_data' => $cart_data])->with($cart_data);
+    }
+
+    public function deleteCart(Request $res)
+    {
+
+        $id = $res->id;
+        $arr['data'] = DB::table("cart")->where('id', $id)->delete();
+
+
+        return redirect("cart");
+    }
 }
