@@ -76,6 +76,11 @@ class userController extends Controller
         $id = $res->id;
         // Fetch the food item by ID
         $food_data = DB::table("food")->where("id", $id)->first();
+        $cart_all = DB::table("cart")->get();
+        $cart_id = $cart_all['id'];
+
+     
+        
 
         if ($food_data) {
             // Insert into the cart table
@@ -87,12 +92,12 @@ class userController extends Controller
                 'image' => $food_data->image,
                 'price' => $food_data->price,
             ]);
-
-
-            $cart_data['cart_data'] = DB::table("cart")->get();
-
-            return view("cart", ['cart_data' => $cart_data])->with($cart_data);
+                return redirect("/cart");
         }
+
+        $cart_data['cart_data'] = DB::table("cart")->get();
+
+        return view("cart", ['cart_data' => $cart_data])->with($cart_data);
     }
 
     public function cart()
@@ -110,5 +115,25 @@ class userController extends Controller
 
 
         return redirect("cart");
+    }
+
+    public function checkOut(Request $res) {
+        // if ($res->placeOrder) {
+
+        //     $fname = $res->fname;
+        //     $lname = $res->lname;
+        //     $designation = $res->designation;
+        //     $image = $res->file('image')->getClientOriginalName();
+        //     $res->file('image')->move(public_path('Chef_images'), $image);
+
+        //     $data = array('name' => $name, 'designation' => $designation, 'image' => $image);
+
+        //     $res = DB::table('chef')->insert($data);
+
+
+        //     return redirect('/viewTeam');
+
+        // }
+        return view("checkOut");
     }
 }

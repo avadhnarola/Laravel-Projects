@@ -365,14 +365,6 @@ class adminController extends Controller
 
 
 
-
-
-
-
-
-
-
-
     public function logout(Request $res)
     {
         $res->session()->flush();

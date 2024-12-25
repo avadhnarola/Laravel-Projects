@@ -73,7 +73,7 @@
                             <h6>Total : </h6>
                             <h6 id="total">₹0.00</h6>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3">Proceed to Checkout</button>
+                        <a href="/checkOut" class="btn btn-primary w-100 mt-3">Proceed to Checkout</a>
                     </div>
                 </div>
             </div>
