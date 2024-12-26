@@ -79,8 +79,8 @@ class userController extends Controller
         $cart_all = DB::table("cart")->get();
         $cart_id = $cart_all['id'];
 
-     
-        
+
+
 
         if ($food_data) {
             // Insert into the cart table
@@ -92,7 +92,7 @@ class userController extends Controller
                 'image' => $food_data->image,
                 'price' => $food_data->price,
             ]);
-                return redirect("/cart");
+            return redirect("/cart");
         }
 
         $cart_data['cart_data'] = DB::table("cart")->get();
@@ -117,23 +117,30 @@ class userController extends Controller
         return redirect("cart");
     }
 
-    public function checkOut(Request $res) {
-        // if ($res->placeOrder) {
+    public function checkOut(Request $res)
+    {
 
-        //     $fname = $res->fname;
-        //     $lname = $res->lname;
-        //     $designation = $res->designation;
-        //     $image = $res->file('image')->getClientOriginalName();
-        //     $res->file('image')->move(public_path('Chef_images'), $image);
+        if ($res->placeOrder) {
 
-        //     $data = array('name' => $name, 'designation' => $designation, 'image' => $image);
+            $fname = $res->fname;
+            $lname = $res->lname;
+            $email = $res->email;
+            $address = $res->address;
+            $city = $res->city;
+            $zip = $res->zip;
+            $notes = $res->notes;
 
-        //     $res = DB::table('chef')->insert($data);
+
+            $data = array('fname' => $fname,'lname' => $lname, 'email' => $email, 'address' => $address,'city' => $city,'zip' => $zip,'notes' => $notes);
+
+            $res = DB::table('checkout')->insert($data);
 
 
-        //     return redirect('/viewTeam');
+            // return view('checkOut');
 
-        // }
-        return view("checkOut");
+        }
+
+        $cart_data['cart_data'] = DB::table("cart")->get(); 
+        return view("checkOut")->with($cart_data);
     }
 }

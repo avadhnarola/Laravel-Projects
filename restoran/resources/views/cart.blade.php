@@ -65,8 +65,12 @@
                             <p class="mb-1" id="subtotal">₹0.00</p>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <p class="mb-1">Delivery Charge : (5%)</p>
-                            <p class="mb-1" id="tax">₹0.00</p>
+                            <p class="mb-1">Discount: (10%)</p>
+                            <p class="mb-1" id="discount">₹0.00</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-1">Delivery: </p>
+                            <p class="mb-1" id="discount">Free</p>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
@@ -87,7 +91,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         let subtotal = 0;
-        let tax = 0;
+        let discount = 0;
         let total = 0;
 
         const updateSummary = () => {
@@ -107,12 +111,12 @@
                 }
             });
 
-            tax = subtotal * 0.05; // Calculate tax (5% of subtotal)
-            total = subtotal + tax; // Calculate total
+            discount = subtotal * 0.1; // Calculate discount (5% of subtotal)
+            total = subtotal - discount; // Calculate total
 
             // Update the DOM
             document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
-            document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
+            document.getElementById('discount').textContent = `- ₹${discount.toFixed(2)}`;
             document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
         };
 
