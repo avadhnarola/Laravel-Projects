@@ -11,7 +11,7 @@ Route::get('/about',[userController::class,'about']);
 Route::get('/service',[userController::class,'service']);
 Route::get('/menu',[userController::class,'menu']);
 Route::get('/team',[userController::class,'team']);
-Route::get('/booking',[userController::class,'booking']);
+Route::any('/booking',[userController::class,'booking']);
 Route::get('/testimonial',[userController::class,'testimonial']);
 Route::any('/contact',[userController::class,'contact']);
 Route::any('/cart',[userController::class,'cart']);

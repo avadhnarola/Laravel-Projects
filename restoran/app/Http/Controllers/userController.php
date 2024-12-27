@@ -45,8 +45,20 @@ class userController extends Controller
         return view('team')->with($arr);
     }
 
-    public function booking()
+    public function booking(Request $res)
     {
+        if($res->submit){
+            $name = $res->name;
+            $email = $res->email;
+            $date = $res->date;
+            $people = $res->people;
+            $message = $res->message;
+
+            $data = array('name'=>$name,'email'=>$email,'date'=>$date,'people'=>$people,'message'=>$message);
+
+            $res=DB::table("tableBook")->insert($data);
+            return redirect('booking');
+        }
         return view('booking');
     }
     public function testimonial()
@@ -76,11 +88,7 @@ class userController extends Controller
         $id = $res->id;
         // Fetch the food item by ID
         $food_data = DB::table("food")->where("id", $id)->first();
-        $cart_all = DB::table("cart")->get();
-        $cart_id = $cart_all['id'];
-
-
-
+        // $cart_all = DB::table("cart")->get();
 
         if ($food_data) {
             // Insert into the cart table

@@ -61,7 +61,7 @@
                         <a href="/service" class="nav-item nav-link">Service</a>
                         <a href="/menu" class="nav-item nav-link">Menu</a>
                         <div class="nav-item dropdown">
-                            <a href="/#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
                                 <a href="/booking" class="dropdown-item">Booking</a>
                                 <a href="/team" class="dropdown-item">Our Team</a>
@@ -72,9 +72,27 @@
                     </div>
                     <a href="/booking" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
-                <a href="/cart/" class="nav-item nav-link"><i class="bi bi-cart3 fa-xl" ></i></a>
+                <a href="/cart" class="nav-item nav-link"><i class="bi bi-cart3 fa-xl"></i></a>
             </nav>
-
-            
         </div>
         <!-- Navbar & Hero End -->
+
+        <!-- JavaScript -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const navLinks = document.querySelectorAll(".navbar-nav a");
+                navLinks.forEach(link => {
+                    link.addEventListener("click", function() {
+                        navLinks.forEach(nav => nav.classList.remove("active"));
+                        this.classList.add("active");
+                    });
+                });
+            });
+        </script>
+
+        <!-- Bootstrap Bundle JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+</body>
+
+</html>

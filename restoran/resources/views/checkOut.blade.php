@@ -84,13 +84,13 @@
                                     <?php }?>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <p>Discount : (20%)</p>
+                                    <p>Discount : (10%)</p>
                                     <p id="discount">₹0.00</p>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-between">
-                                    <h5>Total</h5>
-                                    <p id="total">₹0.00</p>
+                                    <h5>Total: </h5>
+                                    <b><h6 id="total">₹0.00</h6></b>
                                 </div>
                                 <button type="button" id="placeOrder" class="btn btn-primary w-100 mt-3">
                                     Place Order
@@ -119,7 +119,7 @@
                     subtotal += price;
                 });
 
-                discount = subtotal * 0.2; // Calculate discount (20% of subtotal)
+                discount = subtotal * 0.1; // Calculate discount (20% of subtotal)
                 total = subtotal - discount; // Calculate total
 
                 // Update the DOM
@@ -128,35 +128,56 @@
             };
 
             const printBill = () => {
-                const cartItems = document.getElementById('cartItems').innerHTML;
+                const cartItems = `<?php foreach ($cart_data as $key => $values) { ?>
+                    <tr>
+                        <td><img src="{{asset('food_images/'.$values->image)}}" alt="Product Image" style="width: 50px; height: 50px;"></td>
+                        <td>{{$values->name}}</td>
+                        <td>₹{{$values->price}}</td>
+                    </tr>
+                <?php } ?>`;
+
                 const billWindow = window.open('', '_blank');
 
                 billWindow.document.write(`
                     <html>
                         <head>
                             <title class="text-center">Order Bill</title>
+                            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
                             <style>
                                 body { font-family: Arial, sans-serif; margin: 20px; }
                                 .bill-header { text-align: center; margin-bottom: 20px; }
                                 .bill-header h1 { margin: 0; }
-                                .summary-box { margin-top: 20px; }
+                                .table img { object-fit: cover; }
                             </style>
                         </head>
                         <body>
                             <div class="bill-header">
                                 <h1>Your Order Bill</h1>
                             </div>
-                            <div class="summary-box">
-                                ${cartItems}
-                                <div class="d-flex justify-content-between">
-                                    <p>Discount : </p>
-                                    <p>- ₹${discount.toFixed(2)}</p>
-                                </div>
-                                <hr>
-                                <div class="d-flex justify-content-between">
-                                    <h5>Total</h5>
-                                    <p>₹${total.toFixed(2)}</p>
-                                </div>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Item</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${cartItems}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2">Discount:</td>
+                                        <td>- ₹${discount.toFixed(2)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><strong>Total:</strong></td>
+                                        <td><strong>₹${total.toFixed(2)}</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <div class="bill-header">
+                                <h1>Thank You!</h1>
                             </div>
                         </body>
                     </html>

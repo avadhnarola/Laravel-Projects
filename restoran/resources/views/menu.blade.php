@@ -26,7 +26,7 @@
             <!-- Filter Tabs -->
             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                 <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-filter="data-*" href="#">
+                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-filter="all" href="#">
                         <i class="fa fa-coffee fa-2x text-primary"></i>
                         <div class="ps-3">
                             <small class="text-body">Popular</small>
@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 " data-filter="Breakfast" href="#">
+                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3" data-filter="Breakfast" href="#">
                         <i class="fa fa-coffee fa-2x text-primary"></i>
                         <div class="ps-3">
                             <small class="text-body">Popular</small>
@@ -83,8 +83,7 @@
                                             <small class="fst-italic">{{$values->description}}</small>
                                         </div>
                                         <div class="col-sm-2">
-                                        <a href="{{URL('cart/'.$values->id)}}" class="btn btn-cart" style="background-color:#0F172B; color:#fff;">Order</a>
-
+                                            <a href="{{URL('/cart/'.$values->id)}}" class="btn btn-cart" style="background-color:#0F172B; color:#fff;">Order</a>
                                         </div>
                                     </div>
                                 </div>
@@ -100,9 +99,7 @@
 <!-- Menu End -->
 
 
-
 @include('footer')
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
