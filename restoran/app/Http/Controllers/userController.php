@@ -12,7 +12,7 @@ class userController extends Controller
     {
         // array ma store krvana variable and ->with(array)
         $id = $res->id;
-        $arr['data'] = DB::table('service')->limit(4)->get();
+        $arr['data'] = DB::table('services')->limit(4)->get();
         $arr['food_data'] = DB::table('food')->get();
         $arr['chef_data'] = DB::table('chef')->limit(4)->get();
         $arr['testimonial_data'] = DB::table('testimonial')->get();
@@ -29,7 +29,7 @@ class userController extends Controller
 
     public function service(Request $res)
     {
-        $arr['service_data'] = DB::table('service')->get();
+        $arr['service_data'] = DB::table('services')->get();
 
         return view('service')->with($arr);
     }
@@ -47,16 +47,16 @@ class userController extends Controller
 
     public function booking(Request $res)
     {
-        if($res->submit){
+        if ($res->submit) {
             $name = $res->name;
             $email = $res->email;
             $date = $res->date;
             $people = $res->people;
             $message = $res->message;
 
-            $data = array('name'=>$name,'email'=>$email,'date'=>$date,'people'=>$people,'message'=>$message);
+            $data = array('name' => $name, 'email' => $email, 'date' => $date, 'people' => $people, 'message' => $message);
 
-            $res=DB::table("tableBook")->insert($data);
+            $res = DB::table("booktable")->insert($data);
             return redirect('booking');
         }
         return view('booking');
@@ -86,31 +86,48 @@ class userController extends Controller
     public function getCartData(Request $res)
     {
         $id = $res->id;
-        // Fetch the food item by ID
         $food_data = DB::table("food")->where("id", $id)->first();
-        // $cart_all = DB::table("cart")->get();
-
+    
         if ($food_data) {
-            // Insert into the cart table
-            DB::table('cart')->insert([
-                'id' => $food_data->id,
-                'name' => $food_data->name,
-                'description' => $food_data->description,
-                'foodType' => $food_data->foodType,
-                'image' => $food_data->image,
-                'price' => $food_data->price,
-            ]);
-            return redirect("/cart");
+            $existingCartItem = DB::table("cart1")->where("id", $id)->first();
+    
+            if ($existingCartItem) {
+                // Update the quantity if the item is already in the cart
+                DB::table("cart1")
+                    ->where("id", $id)
+                    ->update(['quantity' => $existingCartItem->quantity + 1]);
+            } else {
+                // Insert into the cart table
+                DB::table('cart1')->insert([
+                    'id' => $food_data->id,
+                    'name' => $food_data->name,
+                    'description' => $food_data->description,
+                    'foodType' => $food_data->foodType,
+                    'image' => $food_data->image,
+                    'price' => $food_data->price,
+                    'quantity' => 1
+                ]);
+            }
+    
+            // Calculate total number of products in the cart
+            $totalProducts = DB::table("cart1")->sum('quantity');
+            // Store totalProducts in session
+            session(['totalProducts' => $totalProducts]);
+    
+            return redirect("/cart")->with('totalProducts', $totalProducts);
         }
-
-        $cart_data['cart_data'] = DB::table("cart")->get();
-
-        return view("cart", ['cart_data' => $cart_data])->with($cart_data);
+    
+        $cart_data['cart_data'] = DB::table("cart1")->get();
+        $totalProducts = DB::table("cart1")->sum('quantity');
+        
+        return view("cart", ['cart_data' => $cart_data, 'totalProducts' => $totalProducts]);
     }
+    
+
 
     public function cart()
     {
-        $cart_data['cart_data'] = DB::table("cart")->get();
+        $cart_data['cart_data'] = DB::table("cart1")->get();
 
         return view("cart", ['cart_data' => $cart_data])->with($cart_data);
     }
@@ -119,9 +136,7 @@ class userController extends Controller
     {
 
         $id = $res->id;
-        $arr['data'] = DB::table("cart")->where('id', $id)->delete();
-
-
+        $arr['data'] = DB::table("cart1")->where('id', $id)->delete();
         return redirect("cart");
     }
 
@@ -138,17 +153,13 @@ class userController extends Controller
             $zip = $res->zip;
             $notes = $res->notes;
 
-
-            $data = array('fname' => $fname,'lname' => $lname, 'email' => $email, 'address' => $address,'city' => $city,'zip' => $zip,'notes' => $notes);
+            $data = array('fname' => $fname, 'lname' => $lname, 'email' => $email, 'address' => $address, 'city' => $city, 'zip' => $zip, 'notes' => $notes);
 
             $res = DB::table('checkout')->insert($data);
-
-
             // return view('checkOut');
-
         }
 
-        $cart_data['cart_data'] = DB::table("cart")->get(); 
+        $cart_data['cart_data'] = DB::table("cart1")->get();
         return view("checkOut")->with($cart_data);
     }
 }

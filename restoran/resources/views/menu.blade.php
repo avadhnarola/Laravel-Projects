@@ -14,7 +14,6 @@
     </div>
 </div>
 
-
 <!-- Menu Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -98,8 +97,18 @@
 </div>
 <!-- Menu End -->
 
-
 @include('footer')
+
+<style>
+    .food-item {
+        transform: scale(0.90);
+        transition: opacity 0.5s, transform 0.5s ease;
+    }
+    .food-item.show {
+        opacity: 1;
+        transform: scale(1);
+    }
+</style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -119,10 +128,12 @@
                 // Get the filter value
                 const filter = this.getAttribute('data-filter');
 
-                // Show/Hide items based on the filter
+                // Show/Hide items based on the filter with animation
                 foodItems.forEach(item => {
+                    item.classList.remove('show');
                     if (filter === "all" || item.classList.contains(filter)) {
                         item.style.display = "block";
+                        setTimeout(() => item.classList.add('show'), 10);
                     } else {
                         item.style.display = "none";
                     }

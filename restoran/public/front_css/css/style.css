@@ -142,7 +142,7 @@
         z-index: 999;
         background: transparent !important;
     }
-    
+
     .sticky-top.navbar-dark {
         position: fixed;
         background: var(--dark) !important;
@@ -162,13 +162,13 @@
     animation: imgRotate 50s linear infinite;
 }
 
-@keyframes imgRotate { 
-    100% { 
-        transform: rotate(360deg); 
-    } 
+@keyframes imgRotate {
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
     color: rgba(255, 255, 255, .5);
 }
 
@@ -476,4 +476,23 @@
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+
+
+
+
+
+
+.badge:after {
+    content: attr(value);
+    font-size: 10px;
+    color: #fff;
+    background: red;
+    border-radius: 50%;
+    padding: 2px 5px;
+    position: relative;
+    left: -8px;
+    top: -10px;
+    opacity: 0.9;
 }

@@ -25,7 +25,7 @@
             <?php foreach ($testimonial_data as $key => $values) { ?>
             <div class="testimonial-item bg-transparent border rounded p-4 " style="width: 356px;height: 238px;">
                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p style="height:75px;">{{$values->description}}</p>
+                <p style="height:85px;">{{$values->description}}</p>
                 <div class="d-flex align-items-center">
                     <img class="img-fluid flex-shrink-0 rounded-circle"
                         src="{{asset('testimonial_images/' . $values->image)}}" style="width: 50px; height: 50px;">

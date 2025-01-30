@@ -22,8 +22,7 @@
             <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card-body">
-
-                        <?php foreach ($cart_data as $key => $values) { ?>
+                        @foreach ($cart_data as $key => $values)
                         <div class="row align-items-center mb-3">
                             <div class="col-md-2 text-center">
                                 <img src="{{asset('food_images/' . $values->image)}}" class="img-fluid rounded"
@@ -36,7 +35,7 @@
                             <div class="col-md-2 text-center">
                                 <div class="quantity-control d-flex justify-content-center align-items-center">
                                     <button class="btn btn-outline-secondary btn-sm btn-decrement">-</button>
-                                    <span class="px-2 quantity">1</span>
+                                    <span class="px-2 quantity">{{ $values->quantity }}</span>
                                     <button class="btn btn-outline-secondary btn-sm btn-increment">+</button>
                                 </div>
                             </div>
@@ -48,13 +47,12 @@
                                     class="btn btn-danger btn-sm btn-remove">Remove</a>
                             </div>
                         </div>
-
                         <hr>
-                        <?php } ?>
-
+                        @endforeach
                     </div>
                 </div>
             </div>
+
             <!-- Summary -->
             <div class="col-lg-4">
                 <div class="card">
@@ -86,6 +84,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 @include('footer')
 
 <script>
@@ -94,6 +93,7 @@
         let discount = 0;
         let total = 0;
 
+        // Function to update the summary based on cart data
         const updateSummary = () => {
             subtotal = 0; // Reset subtotal
 
@@ -111,15 +111,16 @@
                 }
             });
 
-            discount = subtotal * 0.1; // Calculate discount (5% of subtotal)
+            discount = subtotal * 0.1; // Calculate discount (10% of subtotal)
             total = subtotal - discount; // Calculate total
 
-            // Update the DOM
+            // Update the DOM with the calculated values
             document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
             document.getElementById('discount').textContent = `- ₹${discount.toFixed(2)}`;
             document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
         };
 
+        // Increment button functionality
         document.querySelectorAll('.btn-increment').forEach(button => {
             button.addEventListener('click', function () {
                 const quantityElement = this.closest('.quantity-control').querySelector('.quantity');
@@ -128,6 +129,7 @@
             });
         });
 
+        // Decrement button functionality
         document.querySelectorAll('.btn-decrement').forEach(button => {
             button.addEventListener('click', function () {
                 const quantityElement = this.closest('.quantity-control').querySelector('.quantity');
@@ -139,6 +141,7 @@
             });
         });
 
+        // Remove button functionality
         document.querySelectorAll('.btn-remove').forEach(button => {
             button.addEventListener('click', function () {
                 const confirmation = confirm('Are you sure you want to remove this item from your cart?');
@@ -153,7 +156,7 @@
             });
         });
 
-        // Initial calculation
+        // Initial calculation on page load
         updateSummary();
     });
 </script>

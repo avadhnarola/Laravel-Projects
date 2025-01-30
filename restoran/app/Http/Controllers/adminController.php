@@ -10,23 +10,19 @@ class adminController extends Controller
 
     public function index(Request $res)
     {
-
         if ($res->session()->has('admin_id')) {
             return redirect('/dashboard');
-
         } else {
-
             if ($res->submit) {
-
+                $id = $res->id;
                 $email = $res->email;
                 $password = $res->password;
 
-                $arr = DB::table('admin')->where('email', $email)->where('password', $password)->first();
+                $arr = DB::table('admins')->where('email', $email)->where('password', $password)->first();
                 session(['admin_id' => $arr->id]);
                 return redirect('/dashboard');
             }
             return view('admin/index');
-
         }
 
     }
@@ -56,7 +52,7 @@ class adminController extends Controller
 
                 $data = array('icon' => $icon, 'title' => $title, 'description' => $description);
 
-                $res = DB::table('service')->insert($data);
+                $res = DB::table('services')->insert($data);
 
 
                 return redirect('/viewService');
@@ -73,7 +69,7 @@ class adminController extends Controller
             return redirect('admin/');
         } else {
 
-            $arr['data'] = DB::table('service')->get();
+            $arr['data'] = DB::table('services')->get();
             return view('admin/viewService')->with($arr);
         }
     }
@@ -81,7 +77,7 @@ class adminController extends Controller
     public function getServiceData(Request $res)
     {
         $id = $res->id;
-        $arr['data'] = DB::table('service')->where('id', $id)->get();
+        $arr['data'] = DB::table('services')->where('id', $id)->get();
         return view('admin/updateService')->with($arr);
     }
 
@@ -98,7 +94,7 @@ class adminController extends Controller
 
 
                 $data = array('icon' => $icon, 'title' => $title, 'description' => $description);
-                $res = DB::table('service')->where('id', $id)->update($data);
+                $res = DB::table('services')->where('id', $id)->update($data);
                 return redirect('/viewService');
             }
         }
@@ -112,7 +108,7 @@ class adminController extends Controller
 
             $id = $res->id;
 
-            $arr['data'] = DB::table('service')->where('id', $id)->delete();
+            $arr['data'] = DB::table('services')->where('id', $id)->delete();
 
             return redirect('/viewService');
         }

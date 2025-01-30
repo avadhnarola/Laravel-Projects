@@ -120,7 +120,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 " data-filter="Breakfast" href="#">
+                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3" data-filter="Breakfast" href="#">
                         <i class="fa fa-coffee fa-2x text-primary"></i>
                         <div class="ps-3">
                             <small class="text-body">Popular</small>
@@ -165,10 +165,10 @@
                                     </h5>
                                     <div class="d-flex">
                                         <div class="col-sm-10">
-                                        <small class="fst-italic">{{$values->description}}</small>
+                                            <small class="fst-italic">{{$values->description}}</small>
                                         </div>
                                         <div class="col-sm-2">
-                                             <a href="{{URL('/cart/'.$values->id)}}" class="btn btn-cart" style="background-color:#0F172B; color:#fff;">Order</a>
+                                            <a href="{{URL('/cart/'.$values->id)}}" class="btn btn-cart" style="background-color:#0F172B; color:#fff;">Order</a>
                                         </div>
                                     </div>
                                 </div>
@@ -309,7 +309,7 @@
             <?php foreach ($testimonial_data as $key => $values) { ?>
             <div class="testimonial-item bg-transparent border rounded p-4 " style="width: 356px;height: 238px;">
                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                <p style="height:75px;">{{$values->description}}</p>
+                <p style="height:85px;">{{$values->description}}</p>
                 <div class="d-flex align-items-center">
                     <img class="img-fluid flex-shrink-0 rounded-circle"
                         src="{{asset('testimonial_images/' . $values->image)}}" style="width: 50px; height: 50px;">
@@ -326,6 +326,17 @@
 <!-- Testimonial End -->
 
 @include('footer');
+
+<style>
+    .food-item {
+        transform: scale(0.90);
+        transition: opacity 0.5s, transform 0.5s ease;
+    }
+    .food-item.show {
+        opacity: 1;
+        transform: scale(1);
+    }
+</style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -345,10 +356,12 @@
                 // Get the filter value
                 const filter = this.getAttribute('data-filter');
 
-                // Show/Hide items based on the filter
+                // Show/Hide items based on the filter with animation
                 foodItems.forEach(item => {
+                    item.classList.remove('show');
                     if (filter === "all" || item.classList.contains(filter)) {
                         item.style.display = "block";
+                        setTimeout(() => item.classList.add('show'), 10);
                     } else {
                         item.style.display = "none";
                     }
